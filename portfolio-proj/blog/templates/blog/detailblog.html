@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +10,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Hugo 0.80.0" />
-    <title>Saba Rahman - Blog</title>
+    <title>{{blog.title}}</title>
 
     <link
       rel="canonical"
@@ -79,52 +80,37 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Saba Rahman</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <a class="nav-link" aria-current="page" href="#">Resume</a>
-              <a class="nav-link active" href="#">Blog</a>
-              <a class="nav-link" href="#">Github</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Saba Rahman</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" aria-current="page" href="{% static 'resume.pdf' %}">Resume</a>
+                    <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+                    <a class="nav-link" href="https://github.com/saba-rahman-official">Github</a>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
+    </nav>
     </header>
 
     <main>
       <div class="container">
-        <h1 class="text-center pt-3">Welcome to Saba's Blog</h1>
-        <br />
-        <br />
-        <h2>Latest Blogs</h2>
-        <hr />
-        {% for blog in blogs.all %}
-        <a href=""><h4>{{ blog.title }}</h4></a>
-        {{blog.pub_date_pretty}}
-        <br />
-
+        <h1 class="text-center pt-3">{{ blog.title }}</h1><br>
+        <p class="text-center">{{blog.pub_date}}</p>
         <img
           class="img-fluid"
           src="{{blog.image.url}}"
-          height="200"
-          width="200"
+          
         />
 
-        <p>{{ blog.summary}}</p>
+        <p>{{ blog.body}}</p>
 
         <br />
-        {% endfor %}
+       
       </div>
     </main>
 

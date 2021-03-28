@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-dark">Hi!, I'm Saba.</h1>
+                <p class="lead text-muted">
+                    I am a passionate web developer. I love to create and explore new
+                    things. Not a competitive programmer but a problem solver!
+                </p>
+                <p>
+                    <a href="mailto:saba.stu2018@juniv.edu" class="btn btn-primary my-2">Email Me</a>
+                </p>
+                <img src="{% static 'saba.jpg'%}" alt="" height="300">
+            </div>
+        </div ></section>
+        
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="{{job.image.url}}"/>
+
+                            <div class="card-body">
+                                <p class="card-text">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</main>
+{% endblock content %}
+   
